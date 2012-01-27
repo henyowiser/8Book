@@ -1,0 +1,339 @@
+/* @Booklet
+----------------------------------------*/
+
+body {
+	background-image:url(../images/epub-bg.jpg);
+	background-repeat:no-repeat;
+	background-position:top center;
+}
+	.booklet {
+	  width:800px;
+	  height:600px;
+	  position:relative; /*background:#fff;*/
+	  margin:0 auto 10px;
+	  /*
+	  left: -600px;
+	  border:1px solid red;*/
+	  overflow:visible !important;
+	  -moz-box-shadow:0px 0px 1px transparent;
+	  -webkit-box-shadow:0px 0px 1px transparent;
+	  box-shadow:0px 0px 1px transparent;
+	  -moz-border-radius:10px;
+	  -webkit-border-radius:10px;
+	  border-radius:10px;
+	}
+	.booklet .b-page  {left:0; top:43; position:absolute; overflow:hidden; padding:0;}
+	
+	.booklet .b-pN  {}
+	.booklet .b-p0  {}
+	.booklet .b-p1  {}
+	.booklet .b-p2  {}    
+	.booklet .b-p3  {}
+	.booklet .b-p4  {}
+	
+	.booklet .b-load  {}
+   
+   	/* Page Wrappers */
+	.booklet .b-wrap       {top:0; position:absolute;}
+	.booklet .b-wrap-left  {
+	  background:#fff;
+	  -webkit-border-top-left-radius: 10px;
+	  -webkit-border-bottom-left-radius: 10px;
+	  -moz-border-radius-topleft:10px;
+	  -moz-border-radius-bottomleft: 10px;
+	  border-top-left-radius: 10px;
+	  border-bottom-left-radius: 10px;
+  background: -webkit-gradient(linear, left bottom, left bottom, from(#fcfcfc), to(#fff));
+  background: -moz-linear-gradient(left, #fcfcfc, #fff);
+  background: linear-gradient(left, #fcfcfc, #fff);
+	}
+	.booklet .b-wrap-right {
+	  background:#efefef;
+	  -webkit-border-top-right-radius: 10px;
+	  -webkit-border-bottom-right-radius: 10px;
+	  -moz-border-radius-topright: 10px;
+	  -moz-border-radius-bottomright: 10px;
+	  border-top-right-radius: 10px;
+	  border-bottom-right-radius: 10px;
+  background: -webkit-gradient(linear, left bottom, left bottom, from(#f1f1f1), to(#fff));
+  background: -moz-linear-gradient(left, #f1f1f1, #fff);
+  background: linear-gradient(left, #f1f1f1, #fff);
+	 }
+	
+	.booklet .b-pN .b-wrap,
+	.booklet .b-p1 .b-wrap,
+	.booklet .b-p2 .b-wrap,
+	.booklet .b-p3 .b-wrap,
+	.booklet .b-p4 .b-wrap  {left:0;}
+	.booklet .b-p0 .b-wrap  {right:0;}
+	
+   	/* Custom Page Types */
+	.booklet .b-page-blank  {padding:0; width:100%; height:100%;}
+	.booklet .b-page-cover  {
+		padding:0; width:100%; height:100%; background:#fff;
+	  -webkit-border-top-right-radius: 10px;
+	  -webkit-border-bottom-right-radius: 10px;
+	  -moz-border-radius-topright: 10px;
+	  -moz-border-radius-bottomright: 10px;
+	  border-top-right-radius: 10px;
+	  border-bottom-right-radius: 10px;
+	}
+	.booklet .b-page-cover h3  {color:#fff; text-shadow:0px 1px 3px #222;}
+   
+   	/* Page Numbers */
+	.booklet .b-counter {bottom:0px; position:absolute; display:block; width:20px; height:15px; background:#D6D4D4; color:#444; text-align:center; font-family:Georgia, "Times New Roman", Times, serif; font-size:9px; padding:5px 0 0;
+	  -webkit-border-top-left-radius: 5px;
+	  -webkit-border-top-right-radius: 5px;
+	  -moz-border-radius-topright:5px;
+	  -moz-border-radius-topleft: 5px;
+	  border-top-left-radius: 5px;
+	  border-top-right-radius: 5px;
+	}
+	.booklet .b-wrap-left  .b-counter  {left:10px;}
+	.booklet .b-wrap-right .b-counter {right:10px;}
+   
+   	/* Page Shadows */
+	.booklet .b-shadow-f  {right:0; top:0; position:absolute; opacity:0; background-image:url("images/shadow-top-forward.png"); background-repeat:repeat-y; background-position:100% 0;}
+	.booklet .b-shadow-b  {left:0;  top:0; position:absolute; opacity:0; background-image:url("images/shadow-top-back.png");    background-repeat:repeat-y; background-position:0 0;}
+	
+	.booklet .b-p0 {background-image:url("images/shadow.png"); background-repeat:repeat-y; background-position:100% 10px;}
+	.booklet .b-p3 {background-image:url("images/shadow.png"); background-repeat:repeat-y; background-position:0 10px;}
+	
+   	/* Overlay Controls */
+	.booklet .b-grab     {cursor: url(images/openhand.cur), default;}
+	.booklet .b-grabbing {cursor: url(images/closedhand.cur), default;}
+	
+   	/* Overlay Controls */
+	.booklet .b-overlay      {top:0; position:absolute; height:100%; width:50%;}
+	.booklet .b-overlay-prev {left:0;}
+	.booklet .b-overlay-next {right:0;}
+	
+   	/* Tab Controls */
+	.booklet .b-tab        {background:#000; height:40px; width:100%; padding:10px 0 0; text-align:center; color:#ccc; position:absolute; font-size:11px;}
+	.booklet .b-tab-prev   {left:0;}
+	.booklet .b-tab-next   {right:0;}
+	.booklet .b-tab:hover  {background:#aaa; color:#000;}	
+	
+   	/* Arrow Controls */
+	.booklet .b-arrow          {display:block; position:absolute; text-indent:-9999px; top:0; height:100%; width:74px;}
+	.booklet .b-arrow div      {display:none; text-indent:-9999px; height:170px; width:74px; position:absolute; left:0; top:25%;}
+	.booklet .b-arrow-next     {right:-80px;}
+	.booklet .b-arrow-prev     {left:-80px;}
+	.booklet .b-arrow-next div {background:url("images/arrow-next.png") no-repeat left top;}
+	.booklet .b-arrow-prev div {background:url("images/arrow-prev.png") no-repeat left top;}
+		
+/* @z-index fix (needed for older IE browsers)
+----------------------------------------*/
+	body              {z-index:0;}
+    .b-menu           {z-index:100;}
+    .b-selector       {z-index:100;}
+	.booklet          {z-index:10;}
+    .b-pN             {z-index:10;}
+    .b-p0             {z-index:10;}
+    .b-p1             {z-index:10;}
+    .b-p2             {z-index:10;}
+    .b-p3             {z-index:10;}
+    .b-p4             {z-index:10;}
+    .b-prev           {z-index:40;}
+    .b-next           {z-index:40;}
+    .b-counter        {z-index:40;}
+	
+/* @Menu Items
+----------------------------------------*/
+	.b-menu {height:40px; padding:0 0 10px;}
+	
+	.b-selector             {height:20px; position:relative; float:right; border:none; color:#cecece; cursor:pointer;}
+	.b-selector .b-current  {
+		padding:5px 15px 5px 15px;
+		line-height:20px;
+		min-width:18px;
+		height:20px;
+		display:block;
+		background:#000;
+		text-align:center;
+		-webkit-border-bottom-left-radius: 10px;
+		-webkit-border-bottom-right-radius: 10px;
+		-moz-border-radius-bottomleft:10px;
+		-moz-border-radius-bottomright: 10px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		border:3px solid #a5a5a5;
+		opacity:0.8;
+		border-top:0;
+	}
+	.b-selector-page        {width:auto; margin-left:15px;}
+	.b-selector-chapter     {width:auto;}
+	
+	.b-selector:hover            {color:#fff; background-position:left 0px;}
+	.b-selector:hover .b-current {background-position:right 0px;}
+	.b-selector ul               {
+		overflow:hidden; margin:0; list-style:none !important; position:absolute; top:30px; right:0; padding:0 0 10px; background:#000; width:240px; font:normal 12px "Myriad Pro", Myriad, "DejaVu Sans Condensed","Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+		-webkit-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		-moz-border:10px;
+		-moz-border-radius: 10px;
+		border-radius: 10px;
+		border-radius: 10px;
+		opacity:0.8;
+	}
+	.b-selector li               {border:none;}
+	.b-selector a                {color:#cecece; height:14px; text-decoration:none; display:block; padding:5px 10px;}
+	.b-selector a .b-text        {float:left; clear:none;}
+	.b-selector a .b-num         {float:right; clear:none;}
+	.b-selector a:hover          {color:#fff;}
+		
+#menu-main {
+	font:normal 12px "Myriad Pro", Myriad, "DejaVu Sans Condensed","Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:#fff;
+	cursor: pointer;
+	padding:5px 0px 5px 3px;
+	line-height:20px;
+	min-width:90px;
+	height:20px;
+	display:block;
+	background:#000;
+	text-align:left;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomleft:10px;
+	-moz-border-radius-bottomright: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border:3px solid #a5a5a5;
+	opacity:0.8;
+	border-top:0;
+	position: absolute;
+	top:0;
+	left:12px;
+	font-size: 14px;
+	z-index: 2000;
+	width: 130px;
+}		
+#menu-main-option {
+  display: none;
+	background:#000;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomleft:10px;
+	-moz-border-radius-bottomright: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border:3px solid #a5a5a5;
+	border-top:0;
+	margin-top: 5px;
+	width: 120px;
+	opacity: 0.80;
+}	
+#menu-main-option ul{
+  margin:0;
+  padding:5px 0 5px 0;
+  list-style-type: none;
+}
+#menu-main-option li{
+  margin:0 5px 5px 10px;
+  padding:0;
+  border-bottom: 1px dashed #808080;
+}
+#menu-main-option a{
+  color:#fff;
+  font-size: 12px;
+  text-decoration: none;
+  font-style: italic;
+}
+#menu-main-option a:hover{
+	opacity: 0.90;
+}
+#menu-zoom-in {
+	font:normal 12px "Myriad Pro", Myriad, "DejaVu Sans Condensed","Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:#fff;
+	cursor: pointer;
+	padding:5px 15px 5px 15px;
+	line-height:20px;
+	min-width:18px;
+	height:20px;
+	display:block;
+	background:#000;
+	text-align:center;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomleft:10px;
+	-moz-border-radius-bottomright: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border:3px solid #a5a5a5;
+	opacity:0.8;
+	border-top:0;
+	position: absolute;
+	top:0;
+	left:160px;
+	font-size: 14px;
+	z-index: 2000;
+}
+#menu-zoom-out {
+	font:normal 12px "Myriad Pro", Myriad, "DejaVu Sans Condensed","Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color:#fff;
+	cursor: pointer;
+	padding:5px 15px 5px 15px;
+	line-height:20px;
+	min-width:18px;
+	height:20px;
+	display:block;
+	background:#000;
+	text-align:center;
+	-webkit-border-bottom-left-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomleft:10px;
+	-moz-border-radius-bottomright: 10px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	border:3px solid #a5a5a5;
+	opacity:0.8;
+	border-top:0;
+	position: absolute;
+	top:0;
+	left:250px;
+	font-size: 14px;
+	z-index: 2000;
+	display:none;
+}
+#custom-menu {
+	position: absolute;
+	top:0;
+	right:12px;
+	font-size: 14px;
+	height: 14px;
+}
+.pub-highlight  {
+	position:absolute;
+	padding:0;
+	width:100%;
+	height:40px;
+	bottom:-70px;
+  background: -webkit-gradient(linear, left bottom, left top, from(#f1f1f1), to(transparent));
+  background: -moz-linear-gradient(bottom, #f1f1f1, transparent);
+  background: linear-gradient(bottom, #f1f1f1, transparent);
+	-webkit-border-top-left-radius: 30px;
+	-webkit-border-top-right-radius: 30px;
+	-moz-border-radius-topleft:30px;
+	-moz-border-radius-topright: 30px;
+	border-top-left-radius: 30px;
+	border-top-right-radius: 30px;
+	opacity:0.40;
+}
+.booklet .pub-blank  {
+	padding:0;
+	width:100%;
+	text-align:center;
+	opacity: 0.2;
+	padding-top:250px;
+	font-size:42px;
+	color:#ccc;
+}
+.pub-chapter-page {
+	border:1px solid transparent;
+	height: 630px;
+	width:490px;
+	background-image:url(../images/epub-chapter-bg.jpg);
+	background-repeat:no-repeat;
+	background-position:top center;
+}
